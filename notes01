@@ -1,0 +1,58 @@
+system to upload exported x3d files to server
+	make sure that blender objects each are tagged properly
+	upload x3d file directly
+		after upload
+			show objects in an x3dom canvas
+			bind onclick events to all child transforms of the scene
+			onclick
+				show code of the object for editing if needed
+				
+				select the object and ajax post it's code to a server's script
+			
+	note which objects you want to export: gear, heart, light01
+		reserve original loc/rot/size
+	
+	storage options
+		store as: file / db table object / json x3d.jquery notation
+		
+		
+Add button function to make an object a button
+	give onmousedown event like the click event
+	give a function to do upon mouseover and a function on mouseout
+	or simply just material changes for mouseover and mouseout
+
+Give ability to add mouseover, mouseout, click, mousedown events... any event to a tranform when made
+	text, cone, cube, cylinder, cone, container
+	
+Menu function
+	passes properties in an object that extends default menu properties
+	default menu node is simply "node" type
+	node animations for different events (hide, show, etc.)
+	
+Lights
+	"light", "id", { properties }
+		type : directional / point / spot
+		shadow *shadowIntensity : 0 - 1 [1]
+		ambience *ambientIntensity : 0 - 1 [0]
+		intensity : 0 - 1 [1]
+		location : x y z [curPos] 
+		color : RGB / HEX [1 1 1]
+		on : true / false [true]
+		direction : rotation [0 0 -1] (for directional/spot only)
+		radius : 1 - 100 [100] (for point/spot only)
+		attenuation : x y z [1 0 0] (for point/spot only)
+		width *beamWidth : 0 - pi/2 [pi/2] (for spot only)
+		cutoff *cutOffAngle : 0 - pi/2 [pi/4] (spot only)
+	if given the same id with light function, change given properties
+	"changelight", "id"
+	color function affects "color" property of light tag if is a light and not a transform
+	
+Textures
+	texture coordinate mapping capability
+	
+Grouping
+	detach elements that need to be grouped from the DOM
+	rearrange them under a new container
+	
+Animation
+	'animate', { movement: {keyFrames, stretch/nostretch}, rotation: {keyFrames, stretch/normal}, scale: {keyFrames, stretch/normal}
